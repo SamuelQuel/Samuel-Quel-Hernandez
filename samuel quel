@@ -1,0 +1,178 @@
+/*    PRACTICA 3.1
+
+  Samuel Quel Hernadez
+         2022183        */
+
+
+int POT  = A0;
+int Lectura;
+int led =3;
+
+void setup()
+{
+  Serial.begin(9600);
+ pinMode(POT,INPUT);
+   pinMode(led,OUTPUT);
+
+}
+
+void loop()
+{
+
+ Lectura = analogRead(POT)/4;
+  analogWrite(led,Lectura);
+  Serial.println(Lectura);
+  delay(100);
+    
+}
+
+/*   PRACTICA 3.2
+
+  Samuel Quel Hernadez
+         2022183        */
+
+
+
+int POT1  = A0;
+int POT2  = A1;
+int POT3  = A2;
+int pin1 =3;
+int pin2 =5;
+int pin3 =6;
+int Lectura1;
+int Lectura2;
+int Lectura3;
+
+void setup()
+{
+  Serial.begin(9600);
+ pinMode(POT1,INPUT);
+   pinMode(pin1,OUTPUT);
+ pinMode(POT2,INPUT);
+   pinMode(pin2,OUTPUT);
+ pinMode(POT3,INPUT);
+   pinMode(pin3,OUTPUT);
+
+}
+
+void loop()
+{
+
+ Lectura1 = analogRead(POT1)/4;
+  analogWrite(pin1,Lectura1);
+  delay(500);
+ Lectura2 = analogRead(POT2)/4;
+  analogWrite(pin2,Lectura2); 
+  delay(500);
+ Lectura3 = analogRead(POT3)/4;
+  analogWrite(pin3,Lectura3);
+  delay(500);
+  
+  Serial.print("Lectura para led RGB:");
+  Serial.print(" R: ");
+  Serial.print(Lectura1);
+  Serial.print(" G: ");
+  Serial.print(Lectura2);
+  Serial.print(" B ");
+  Serial.println(Lectura3);
+  
+ 
+    
+}
+
+/*    PRACTICA 3.3
+
+   Samuel Quel Hernadez
+         2022183        */
+
+
+
+int led1 = 3;
+int led2 = 5;
+int led3 = 6;
+int led4 = 9;
+int led5 = 10;
+
+void setup(){
+pinMode(led1, OUTPUT);
+pinMode(led2, OUTPUT);
+pinMode(led3, OUTPUT);
+pinMode(led4, OUTPUT);
+pinMode(led5, OUTPUT);
+}void loop(){
+
+int valorPotenciometro = analogRead(A0);
+
+digitalWrite(led1, LOW);
+digitalWrite(led2, LOW);
+digitalWrite(led3, LOW);
+digitalWrite(led4, LOW);
+digitalWrite(led5, LOW);
+
+
+
+if(valorPotenciometro > 0){
+digitalWrite(led1, HIGH);
+}
+if(valorPotenciometro > 200){
+digitalWrite(led2, HIGH);
+}
+if(valorPotenciometro > 500){
+digitalWrite(led3, HIGH);
+}
+if(valorPotenciometro > 800){
+digitalWrite(led4, HIGH);
+}
+if(valorPotenciometro > 1000){
+digitalWrite(led5, HIGH);
+}
+delay(10);
+}
+
+
+/*    PRACTICA 3.4
+
+   Samuel Quel Hernadez
+         2022183        */
+
+
+int R1 = 9845;
+void setup() {
+  
+  Serial.begin(9600);
+  pinMode(A0, INPUT);
+}
+
+void loop() {
+  double resistencia, aux;
+  aux = (float)analogRead(A0)/1023;
+  resistencia = aux * (float) R1 / (1 - aux);
+  Serial.println("valor de la resistencia:"+ String(resistencia)+ "Ω");
+  delay(2000);
+}
+
+/*    PRACTICA 3.5
+
+  Samuel Quel Hernadez
+         2022183        */
+
+
+float
+  R1=10000;
+
+
+float
+  R2=100000;
+
+void setup()
+{
+  Serial.begin(9600);
+}
+void loop()
+{
+float v=(analogRead(A1)*5)/1023.0;
+float Resultado=(v/(R2/(R1+R2)));
+Serial.print("v= ");
+Serial.println(Resultado);
+delay(500);
+}
